@@ -1,14 +1,6 @@
 <?php
  session_start();
- require_once 'Mail.php';
- $wgSMTP = array(
-    'host' => 'tls://smtp.sendgrid.net',
-    'IDHost' => 'heroku.com',
-    'port' => 587,
-    'username' => getenv("SENDGRID_USERNAME"), 
-    'password' => getenv("SENDGRID_PASSWORD"),
-    'auth' => true
- );
+
 ?>
 <?php
     if ($_POST){
@@ -36,6 +28,9 @@
 <?php
 if(isset($_POST['button_pressed']))
 {
+    
+    require 'Mail.php';
+
     $to      = 'thomaswenglish@gmail.com';
     $subject = 'Equipment Request';
     $message = 'TESTING';
