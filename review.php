@@ -8,7 +8,7 @@
     'username' => getenv("SENDGRID_USERNAME"), 
     'password' => getenv("SENDGRID_PASSWORD"),
     'auth' => true
- )
+ );
 ?>
 <?php
     if ($_POST){
