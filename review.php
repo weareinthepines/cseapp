@@ -1,5 +1,14 @@
 <?php
  session_start();
+ require_once 'Mail.php';
+ $wgSMTP = array(
+    'host' => 'tls://smtp.sendgrid.net',
+    'IDHost' => 'heroku.com',
+    'port' => 587,
+    'username' => getenv("SENDGRID_USERNAME"), 
+    'password' => getenv("SENDGRID_PASSWORD"),
+    'auth' => true
+ )
 ?>
 <?php
     if ($_POST){
@@ -20,12 +29,12 @@
     </head>
     <body style="text-align: center" style="margin: 10%">
 <form action="" method="post">
-    <input type="submit" name="submit" value="Submit Equipment Request" />
+    <input type="submit" value="Submit Equipment Request" />
+    <input type="hidden" name="button_pressed" value="1" />
 </form>
 
 <?php
-
-if(isset($_POST['submit']))
+if(isset($_POST['button_pressed']))
 {
     $to      = 'thomaswenglish@gmail.com';
     $subject = 'Equipment Request';
